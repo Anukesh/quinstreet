@@ -24,7 +24,7 @@ Working without frameworks presented unique challenges but provided valuable ins
 1. Clone the repository
 ```bash
 git clone <repository-url>
-cd quinstreet-challenge
+cd into folder
 ```
 
 2. Install dependencies
