@@ -38,7 +38,7 @@ document.querySelector("#app").innerHTML = `
     <div class="form-box">
       <div class="form-box__header">
         <p class="form-box__title">
-          Enter to win a 3rd generation Nest Learning Thermostat worth $249.
+          Enter to win a 3rd generation Nest Learning Thermostat worth $299.
         </p>
       </div>
       <form id="userForm" class="form">
