@@ -29,4 +29,4 @@ jobs:
           external_repository: user/Anukesh.github.io
           publish_branch: deployment
           publish_dir: ./dist
-          github_token: ${{ secrets.DEPLOY_TOKEN }}
+          personal_token: ${{ secrets.DEPLOY_TOKEN }}
