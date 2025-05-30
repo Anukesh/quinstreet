@@ -96,7 +96,7 @@ form.addEventListener("submit", handleFormSubmit);
 
 document.querySelectorAll(".form__input").forEach((input) => {
   input.addEventListener("blur", () => {
-    input.classList.add("form__input--invalid");
+    input.classList.add("form__input--touched");
   });
 });
 

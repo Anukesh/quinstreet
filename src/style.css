@@ -75,7 +75,7 @@ body {
   width: 100%;
 }
 
-.form__input--invalid {
+.form__input--touched:invalid {
   border: 1px solid #e41111;
 }
 
