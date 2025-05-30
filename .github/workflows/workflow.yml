@@ -26,7 +26,7 @@ jobs:
       - name: Deploy to user.github.io deployment branch
         uses: peaceiris/actions-gh-pages@v4
         with:
-          external_repository: user/Anukesh.github.io
+          external_repository: Anukesh/Anukesh.github.io
           publish_branch: deployment
           publish_dir: ./dist
           personal_token: ${{ secrets.DEPLOY_TOKEN }}
