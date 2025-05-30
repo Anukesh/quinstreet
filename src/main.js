@@ -1,50 +1,84 @@
 import "./style.css";
 import modernizeLogo from "/logo.svg";
 
-document.querySelector("#app").innerHTML = `
-  <div class="container">
-    <header class="header">
-      <img src=${modernizeLogo} alt="Modernize Logo" class="logo" />
-    </header>
+function renderAdBox({
+  title = "",
+  label = "",
+  heading = "",
+  content = "",
+  link = "",
+} = {}) {
+  return `
+    <section class="ad">
+        <p class="ad__title">${title}</p>
 
-    <section class="form-section">
-      <div class="form-box">
-        <div class="form-title-container">
-        <p class="form-title">Enter to win a 3rd generation Nest Learning Thermostat worth $249.</p>
-        </div>
-        <form id="userForm">
-          <input id="name"  type="text" placeholder="Name" required minlength="2"/>
-          <div class="city-state">
-            <input id="city" type="text" class="city-input" placeholder="City" />
-            <input id="state" type="text" class="state-input" placeholder="State" />
+        <div class="ad__inner">
+          <div>
+            <p class="ad__label">${label}</p>
+            <h3 class="ad__heading">${heading}</h3>
           </div>
-          <input id="phone" type="text" placeholder="Phone Number" required />
-          <input id="email" type="email" placeholder="Email Address" required />
-          <button id="submit" class="submit-button " type="submit">Enter to Win</button>
-        </form>
-      </div>
-    </section>
+          <div>
+            <p class="ad__text">
+              ${content}
+            </p>
+            <a href="${link}" class="ad__link" target="_blank">READ MORE</a>
+          </div>
+        </div>
+      </section>
+  `;
+}
 
-    <section class="advertorial">
-    <div class="ad-container">
-    <div class="sub-header-container">
-    <p class="sub-header">Even More Savings</p>
+document.querySelector("#app").innerHTML = `
+ <div class="container">
+  <header class="header">
+    <img src="${modernizeLogo}" alt="Modernize Logo" class="header__logo" />
+  </header>
+
+  <section class="form-section">
+    <div class="form-box">
+      <div class="form-box__header">
+        <p class="form-box__title">
+          Enter to win a 3rd generation Nest Learning Thermostat worth $249.
+        </p>
+      </div>
+      <form id="userForm" class="form">
+        <input
+          id="name"
+          type="text"
+          class="form__input"
+          placeholder="Name"
+          required
+          minlength="2"
+        />
+        <div class="form__location">
+          <input id="city" type="text" class="form__input form__location-city" placeholder="City" />
+          <input
+            id="state"
+            type="text"
+            class="form__input form__location-state"
+            placeholder="State"
+          />
+        </div>
+        <input id="phone" type="text" class="form__input" placeholder="Phone Number" required />
+        <input id="email" type="email" class="form__input" placeholder="Email Address" required />
+        <button id="submit" class="form__submit" type="submit">
+          Enter to Win
+        </button>
+      </form>
     </div>
-    <div class="ad-box">
-    <div class="ad-box-inner">
-    <div>
-    <p class="ad-label">ADVERTORIAL</p>
-    <h3 class="ad-heading">Tricks Homeowners Use to Eliminate Bills</h3>
-    </div>
-    <div>
-    <p class="ad-text">Surging energy bills, unpredictable weather patterns and dissatisfaction with utility companies have homeowners scrambling...</p>
-    <a href="https://www.google.com" target="_blank">READ MORE</a>
-    </div>
-    </div>
-    </div>
-    </div>
-    </section>
+  </section>
+
+  <div class="bottom-section">
+    ${renderAdBox({
+      title: "Even More Savings",
+      label: "ADVERTORIAL",
+      heading: "Tricks Homeowners Use to Eliminate Bills",
+      content:
+        "Surging energy bills, unpredictable weather patterns and dissatisfaction with utility companies have homeowners scrambling...",
+      link: "https://www.google.com",
+    })}
   </div>
+</div>
 `;
 
 const nameInput = document.querySelector("#name");
@@ -60,9 +94,9 @@ emailInput.addEventListener("input", handleEmailInput);
 form.addEventListener("input", handleFormInput);
 form.addEventListener("submit", handleFormSubmit);
 
-document.querySelectorAll("input").forEach((input) => {
+document.querySelectorAll(".form__input").forEach((input) => {
   input.addEventListener("blur", () => {
-    input.classList.add("touched");
+    input.classList.add("form__input--invalid");
   });
 });
 
